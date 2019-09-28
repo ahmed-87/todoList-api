@@ -1,0 +1,23 @@
+spring:
+  profiles:
+      active: "dev"
+  datasource:
+    url: jdbc:sqlserver://localhost;databaseName=TODO;
+    username: todo
+    password: todo123
+    driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  jpa:
+    show-sql: true
+    hibernate:
+      dialect: org.hibernate.dialect.SQLServer2012Dialect
+      hbm2ddl: update
+
+
+##Logs Configuration
+logging:
+  level:
+      com.ZIRO.todoListapi: DEBUG
+  file: src/main/resources/Logs/logs.log
+  pattern:
+     file: "[%d{yyyy-MMM-dd HH:mm:ss.SSS}] %-5level [%thread] [%logger{0}.java] - %msg%n"
+     console: "[%d{yyyy-MMM-dd HH:mm:ss.SSS}] %-5level [%thread] [%logger{0}.java] - %msg%n"

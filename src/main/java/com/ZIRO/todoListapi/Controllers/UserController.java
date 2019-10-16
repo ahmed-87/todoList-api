@@ -30,6 +30,16 @@ public class UserController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 
+    public UserController(UserRepository userRepository){
+        this.userRepository = userRepository;
+    }
+
+    @RequestMapping(value = "/me")
+    public ResponseEntity<Map<String, Object>> getMe(){
+        Map<String, Object> results = new HashMap<>();
+        results.put("me", "Ahmed");
+        return new ResponseEntity<Map<String, Object>>(results, HttpStatus.OK);
+    }
     @RequestMapping(value = "/all")
     public ResponseEntity<List<User>> getAllUsers(){
         List<User> users = new ArrayList<>();
@@ -63,17 +73,9 @@ public class UserController {
     public ResponseEntity<Map<String, Object>> updateUser(@RequestBody User user){
         Map<String, Object> results = new HashMap<>();
         try{
-            User dbUser = userRepository.findOneByUserId(user.getUserId());
-            if(dbUser != null){
-                dbUser.setFirstName(user.getFirstName());
-                dbUser.setLastName(user.getLastName());
-                dbUser.setEmail(user.getEmail());
-                dbUser.setPhone(user.getPhone());
-                userRepository.save(dbUser);
-            }else{
-                userRepository.save(user);
-            }
+            User resultUser = userRepository.save(user);
             results.put("Success", "Yes");
+            results.put("data", resultUser);
             httpStatus = HttpStatus.OK;
         }catch(Exception E){
             LOGGER.info("Error in adding User, please see below details");

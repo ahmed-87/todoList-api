@@ -91,7 +91,7 @@ public class UserControllerTest {
         assertNotNull(response);
         assertTrue(response.hasBody());
         assertEquals(response.getStatusCode(), HttpStatus.BAD_REQUEST);
-        verifyNoInteractions(userRepository);
+        verifyZeroInteractions(userRepository);
     }
 
     @Test

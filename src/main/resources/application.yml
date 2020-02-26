@@ -10,8 +10,8 @@ spring:
     show-sql: true
     hibernate:
       dialect: org.hibernate.dialect.SQLServer2012Dialect
-      hbm2ddl: update
-
+#      hbm2ddl: update
+      ddl-auto: update
 
 ##Logs Configuration
 logging:

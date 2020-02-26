@@ -73,7 +73,17 @@ public class UserController {
     public ResponseEntity<Map<String, Object>> updateUser(@RequestBody User user){
         Map<String, Object> results = new HashMap<>();
         try{
-            User resultUser = userRepository.save(user);
+            User dbUser = userRepository.findOneByUserId(user.getUserId());
+            User resultUser = new User();
+            if(dbUser != null){
+                dbUser.setFirstName(user.getFirstName());
+                dbUser.setLastName(user.getLastName());
+                dbUser.setEmail(user.getEmail());
+                dbUser.setPhone(user.getPhone());
+                resultUser = userRepository.save(dbUser);
+            }else{
+                resultUser = userRepository.save(user);
+            }
             results.put("Success", "Yes");
             results.put("data", resultUser);
             httpStatus = HttpStatus.OK;

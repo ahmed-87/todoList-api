@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
 	<modelVersion>4.0.0</modelVersion>
 	<packaging>war</packaging>
 	<parent>
@@ -19,6 +20,7 @@
 		<java.version>1.8</java.version>
 		<spring-boot-admin.version>2.1.5</spring-boot-admin.version>
 		<spring-cloud.version>Greenwich.SR3</spring-cloud.version>
+		<start-class>com.ZIRO.todoListapi.TodoListApiApplication</start-class>
 	</properties>
 
 	<dependencies>
@@ -86,6 +88,19 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+
+<!--	<distributionManagement>-->
+<!--		<repository>-->
+<!--			<id>central</id>-->
+<!--			<name>DESKTOP-J7P20L6-releases</name>-->
+<!--			<url>http://localhost:8081/artifactory/Jenkins-snapshot</url>-->
+<!--		</repository>-->
+<!--		<snapshotRepository>-->
+<!--			<id>snapshots</id>-->
+<!--			<name>DESKTOP-J7P20L6-snapshots</name>-->
+<!--			<url>http://localhost:8081/artifactory/Jenkins-snapshot</url>-->
+<!--		</snapshotRepository>-->
+<!--	</distributionManagement>-->
 
 	<build>
 		<plugins>
